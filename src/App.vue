@@ -1,18 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="hero-head">
+    <nav class="navbar" id="nav">
+      <div class="container">
+        <div class="navbar-brand">
+          <router-link to="/">Accueil</router-link>
+          <span class="mx-3">|</span> 
+          <router-link :to="{ path: getWhoLink() }">Qui sommes-nous?</router-link>
+          <span class="mx-3">|</span> 
+          <router-link to="/a-propos">À propos</router-link>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <router-view/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+<script>
+  export default {
+    name: 'app',
+    methods: {
+      getWhoLink: function() {
+        return '/qui-sommes-nous'
+      }
+    }
   }
-}
 </script>
+
 
 <style>
 #app {
@@ -21,6 +35,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
